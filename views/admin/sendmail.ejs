@@ -1,0 +1,32 @@
+
+<%- include("nav")%>
+<div class="card mt-3">
+    <div class="card-header info">
+        Gửi mail
+    </div>
+    <div class="card-body">
+        <form action="/testsendmail_" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="">Gửi đến</label>
+                <input type="email" name="mail" class="form-control " placeholder="">
+            </div>
+            <div class="form-group">
+                <label for="">Tiêu đề</label>
+                <input type="text" name="tieude" class="form-control " placeholder="">
+            </div>
+           
+            <div class="form-group">
+                <label for="">Nội dung</label>
+                <textarea class="form-control" name="noidung" id="noidung" cols="30" rows="10"></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-dark">Lưu</button>
+
+            </div>
+
+        </form>
+        
+    </div>
+
+</div>
+<%- include("foot")%>

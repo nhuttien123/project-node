@@ -1,0 +1,56 @@
+<%- include("nav")%>
+<form action="#" method="post">
+    <div class="card mt-3">
+        <div class="card-header">
+            QUẢN LÝ LOẠI HÀNG
+        </div>
+      <div id="product"></div>
+    
+    
+    <script>
+        var url = "http://localhost:3000/ctdata/";
+        axios.get(url)
+            .then(function (response) {
+                // console.log(response);
+                let str = "";
+                str += '<div class="card-body">';
+                str += '<table class="table table-striped table">';
+                str += '<thead>';
+                str += '<tr class="bg-gradient-dark text-light">';
+               
+                str += '<th>Mã loại</th>';
+                str += '<th>Loại</th>';
+
+                str += '<th>Ẩn hiện</th>';
+
+                str += '<th></th>';
+                str += '<th></th>';
+
+                str += '</tr>';
+                str += '</thead>';
+                str += '<tbody>';
+                for (i in response.data) {
+                    let motuser = response.data[i];
+                    console.log(motuser);
+                    str += '<tr>';
+                    str+=' <td>'+motuser.cataId+'</td >';
+                    str += ' <td>' + motuser.loai + '</td >';
+                     str += ' <td>' + motuser.anhien + '</td >';
+                    str+=' <td><a href="/delcat/'+motuser.cataId+'" class="btn btn-secondary">Xóa</a></td>';
+                       str += ' <td><a href="/edit/' + motuser.cataId + '" class="btn btn-secondary">Sửa</a></td>';
+                    str += '</tr>';
+                }//for 
+
+                str += '</tbody>';
+                str += '</tbody >';
+                str += ' </table >';
+                document.getElementById("product").innerHTML += str;
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+    </script>
+        <div class="card-footer">
+</form>
+<%- include("foot")%>

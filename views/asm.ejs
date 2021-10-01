@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@600&display=swap');
+</style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+   
+    <title>Document</title>
+</head>
+<body>
+    <nav >
+        <div class="frt">
+            <div class="home">
+                <i class="fas fa-home"></i>
+                HOME:Phần mềm Quang Trung ,Quận 12,TpHCM
+            </div>
+            <div class="box-info">
+                <div class="info">
+                    <i class="fas fa-clock"></i>
+                    Open 2-6: 7am-10pm
+                </div>
+                <div class="info">
+                    <i class="fas fa-envelope"></i>
+                    tienlnps12361@fpt.edu.vn
+                </div>
+                <div class="info">
+                    <i class="fas fa-arrow-right"></i>
+                    <a href="" id="login" data-toggle="modal" data-target="#myModal" style="text-decoration: none; color: white;"></a> 
+                    <a href="/thoat" onclick="dangxuat()" id="logout" style="text-decoration: none; color: white;"></a>
+                </div>
+                <div class="info">
+                    <p id="user"> </p>
+                </div>
+               
+            </div>
+        </div>
+
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+        
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <form action="/dangnhap_" method="POST" class="col-6 border border-dark rounded p-3 m-auto"
+                            onsubmit="dangnhap()" name="myform">
+                            <h1 class="d-flex p-2 justify-content-center">Đăng nhập</h1>
+                            <div class="form-group mb-3">
+                                <label for="un">Username</label>
+                                <input type="text" class="form-control bg-info" name="username" id="un" placeholder="Tên người dùng">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="pass">Mật khẩu</label>
+                                <input type="password" class="form-control bg-primary" name="password" id="pass" placeholder="Mật khẩu">
+                            </div>
+                            <div class="form-group mt-3 ">
+                                <button type="submit" class="btn btn-danger px-4  py-2 text-white" > ĐĂNG NHẬP</button>
+                                <a href="/signup" class="btn btn-danger">Đăng ký</a>
+                                <a href="/doipass" class="btn " style="text-decoration: underline;">Đổi mật khẩu </a>
+                            </div>
+                        </form>
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                    </div>
+                </div>
+        </div>
+        </div>
+
+        <div id="navbar">
+        <div class="secd" >
+            <img src="images/logo.png" alt="">
+            <div class="box-info2">
+                <div class="info2">
+                    <i class="fas fa-phone-volume bounce"></i>
+                    Phone:0949814865
+                </div>
+                <div class="info2">
+                    <a href="/cart">
+                        Giỏ hàng
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>  
+                </div>
+                <div class="info2 ">
+                <a href=""><i class="fas fa-search"></i></a>
+                </div>
+            </div>
+        </div>
+       
+        <div class="thd" >
+            <ul>
+                <li>
+                    <a href="asm1.html" style=" color: #ff5440;" >Trang chủ</a>
+                    <a href="">Giới thiệu</a>
+                    <a href="/product">Cửa hàng</a>
+                    <a href="">Tin tức</a>
+                    <a href="">Liên hệ</a>
+                </li>
+            </ul>
+        </div>
+        </div>
+    </nav>
+    <header>
+        <div class="banner">
+            <div class="sale-banner">
+                <img src="images/sale-25.png" alt="">
+            </div>
+            <div class="content-banner">
+                <h1>Mua hàng online !</h1>
+                <h1>Tiết kiệm tiền</h1>
+                <p >Tiết kiệm cho những thứ quan trọng</p>
+                <p style="font-weight: bolder;">Tại cửa hàng và trực tuyến</p>
+            </div>
+                <a href="" class="banner-btn"><span> Bắt đầu</span></a>
+        </div>
+        <div class="box-banner2">
+            <div class="banner2">
+                <div class="sl-1">
+                    <img src="images/slider-dog-small.png" class="img-sl" alt="">
+                    <div class="content-banner2">
+                        <h2>Tiết kiệm</h2>
+                        <h1>25%</h1>
+                        <a href="">Thức ăn chó mèo ></a>
+                    </div>
+
+                </div>
+                <div class="sl-1">
+                    <img src="images/slider-cat.png" class="img-sl" alt="">
+                    <div class="content-banner2">
+                        <h2>Tư vấn</h2>
+                        <h1>Miễn phí</h1>
+                        <a href="">Tư vấn ></a>
+                    </div>
+                </div>
+                <div class="sl-1">
+                    <img src="images/slider-dog.png" class="img-sl" alt="">
+                    <div class="content-banner2">
+                        <h2>Có hạn tiết kiệm đến !</h2>
+                        <h1>45%</h1>
+                        <a href="">Nhiều hơn ></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section>
+        <h1>
+            Sản phẩm hiện tại
+        </h1>
+      <div class="pro" id="newpro">
+           
+            <script>
+                var url = "http://localhost:3000/maindata/";
+                axios.get(url)
+                    .then(function (response) {
+                        // console.log(response);
+                        let str = "";
+                        for (i in response.data) {
+                            let motuser = response.data[i];
+                            console.log(motuser);
+                            str += "<div class='box-pro'>";
+                            str += ' <a href="/dt/' +motuser.proId+ '" style="text-decoration: none;">';
+                            str += ' <div class="on-buy">';
+                            str += ' <a href="/dt/' +motuser.proId+ '" style= "text-decoration: none;">';
+                            str += '<img src="../images/' + motuser.images + '"alt=""';
+                            str += '</a>';
+                            str += ' <div class="mg"></div>';
+                            str += ' <h2>' + motuser.proname + '</h2>';
+                            str += "<h2 style='color: #ffca44;'>" + motuser.saleprice + ' vnđ' + "</h2>";
+                            str += ' <a href="#" class="buy-btn">';
+                            str += '   <span>Giỏ hàng</span>';
+                            str += ' </a>';
+                            str += '</div>';
+                            str += '</a>';
+                            str += "</div>";
+                        }//for    
+                        document.getElementById("newpro").innerHTML += str;
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+
+            </script>
+        </div>
+        <h1>Sản phẩm phổ biến</h1>
+            <div class="pro"  id="hot">
+               
+                    <script>
+                        var url = "http://localhost:3000/maindata2/";
+                        axios.get(url)
+                            .then(function (response) {
+                                // console.log(response);
+                                let str = "";
+                                for (i in response.data) {
+                                    let motuser = response.data[i];
+                                    console.log(motuser);
+                                    str += "<div class='box-pro'>";
+                                    str += ' <a href="" style="text-decoration: none;">';
+                                    str += ' <div class="on-buy">';
+                                    str += ' <a href="/dt/' + motuser.proId + '" style= "text-decoration: none;">';
+                                    str += '<img src="../images/' + motuser.images + '"alt=""';
+                                    str += '</a>';
+                                    str += ' <div class="mg"></div>';
+                                    str += ' <h2>' + motuser.proname + '</h2>';
+                                    str += "<h2 style='color: #ffca44;'>" + motuser.saleprice + ' vnđ' + "</h2>";
+                                    str += ' <a href="#" class="buy-btn">';
+                                    str += '   <span>Giỏ hàng</span>';
+                                    str += ' </a>';
+                                    str += '</div>';
+                                    str += '</a>';
+                                    str += "</div>";
+                                }//for    
+                                document.getElementById("hot").innerHTML += str;
+                            })
+                            .catch(function (error) {
+                                console.log(error);
+                            });
+
+                    </script>
+                    
+            </div>
+    </section>
+    <article>
+        <div class="box-sale">
+            
+            <div class="on-sale" style="background-color: rgb(253, 183, 69);">
+                <a href="">
+                    <h1>Giảm thêm 40%</h1>
+                    <p>trên hóa đơn $100,sử dụng mã giảm giá</p>
+                </a>
+            </div>
+            <div class="on-sale" style="background: rgb(165, 194, 28);">
+                <a href="">
+                    <h1>Free ship</h1>
+                    <p>trên hóa đơn $49~có giới hạn</p>
+                </a>
+            </div>
+        </div>
+
+        <div class="more-pro" >
+            <div class="" id="a">
+                <h2>Sản phẩm giảm 50%</h2>
+               
+                <script>
+                    var url = "http://localhost:3000/maindata3/";
+                    axios.get(url)
+                        .then(function (response) {
+                            // console.log(response);
+                            let str = "";
+                            for (i in response.data) {
+                                let motuser = response.data[i];
+                                console.log(motuser);
+                                str+='<div class="sm-pro">'
+                                str+= ' <div class="sm-box " style="line-height: 8vw;">';
+                                str+= '<a href="/dt/' + motuser.proId + '">';
+                                str+='<img src="images/' +motuser.images+ '">';
+                                str+='</a>';
+                                str+=' <div class="mg-tp">';
+                                str+='<p>' +motuser.proname+ '</p>';
+                                str+= ' <p><del >'+motuser.price+ 'vnđ' +'</del> ' +motuser.saleprice+'vnđ'+ '</p>';
+                                str+='</div>';
+                                str+='</div>';
+                            }//for    
+                            document.getElementById("a").innerHTML += str;
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+
+                </script>
+
+            </div>
+           
+            <div class="" id="b">
+                <h2>Sản phẩm mới</h2>
+               
+                    <script>
+                        var url = "http://localhost:3000/maindata4/";
+                        axios.get(url)
+                            .then(function (response) {
+                                // console.log(response);
+                                let str = "";
+                                for (i in response.data) {
+                                    let motuser = response.data[i];
+                                    console.log(motuser);
+                                    str += '<div class="sm-pro">'
+                                    str += ' <div class="sm-box " style="line-height: 8vw;">';
+                                    str += '<a href="/dt/' + motuser.proId + '">';
+                                    str += '<img src="images/' + motuser.images + '">';
+                                    str += '</a>';
+                                    str += ' <div class="mg-tp">';
+                                    str += '<p>' + motuser.proname + '</p>';
+                                    str += ' <p><del >' + motuser.price + 'vnđ' + '</del> ' + motuser.saleprice + 'vnđ' + '</p>';
+                                    str += '</div>';
+                                    str += '</div>';
+                                }//for    
+                                document.getElementById("b").innerHTML += str;
+                            })
+                            .catch(function (error) {
+                                console.log(error);
+                            });
+
+                    </script>
+            </div>
+            <div class="" id="c">
+                <h2>Sản phẩm mua nhiều</h2>
+                   
+
+                        <script>
+                            var url = "http://localhost:3000/maindata5/";
+                            axios.get(url)
+                                .then(function (response) {
+                                    // console.log(response);
+                                    let str = "";
+                                    for (i in response.data) {
+                                        let motuser = response.data[i];
+                                        console.log(motuser);
+                                        str += '<div class="sm-pro">'
+                                        str += ' <div class="sm-box " style="line-height: 8vw;">';
+                                        str += '<a href="/dt/' + motuser.proId + '">';
+                                        str += '<img src="images/' + motuser.images + '">';
+                                        str += '</a>';
+                                        str += ' <div class="mg-tp">';
+                                        str += '<p>' + motuser.proname + '</p>';
+                                        str += ' <p><del >' + motuser.price + 'vnđ' + '</del> ' + motuser.saleprice + 'vnđ' + '</p>';
+                                        str += '</div>';
+                                        str += '</div>';
+                                    }//for    
+                                    document.getElementById("c").innerHTML += str;
+                                })
+                                .catch(function (error) {
+                                    console.log(error);
+                                });
+
+                        </script>
+            </div>
+            <div class="" id="d">
+                <h2>Sản phẩm tự chọn</h2>
+               
+
+                    <script>
+                        var url = "http://localhost:3000/maindata6/";
+                        axios.get(url)
+                            .then(function (response) {
+                                // console.log(response);
+                                let str = "";
+                                for (i in response.data) {
+                                    let motuser = response.data[i];
+                                    console.log(motuser);
+                                    str += '<div class="sm-pro">'
+                                    str += ' <div class="sm-box " style="line-height: 8vw;">';
+                                    str += '<a href="/dt/' + motuser.proId + '">';
+                                    str += '<img src="images/' + motuser.images + '">';
+                                    str += '</a>';
+                                    str += ' <div class="mg-tp">';
+                                    str += '<p>' + motuser.proname + '</p>';
+                                    str += ' <p><del >' + motuser.price + 'vnđ' + '</del> ' + motuser.saleprice + 'vnđ' + '</p>';
+                                    str += '</div>';
+                                    str += '</div>';
+                                }//for    
+                                document.getElementById("d").innerHTML += str;
+                            })
+                            .catch(function (error) {
+                                console.log(error);
+                            });
+
+                    </script>
+               
+            </div>
+        </div>
+    </article>
+    <footer>
+        <div class="ctn">
+            <div class="foot-ctn">
+                <img src="images/logo.png" alt="">
+                <p > Đăng ký để nhận được thông tin mới nhất từ chúng tôi</p>
+                <input type="text" placeholder="Email..." >
+            </div>
+            <div class="foot-ctn">
+                <h1>Liên hệ</h1>
+                <p>Địa chỉ: Phần mềm Quang Trung , Quận 12, TpHCM</p>
+                <p>Email: tienlnps12361@fpt.edu.vn</p>
+                
+            </div>
+            <div class="foot-ctn">
+                <h1>Hỗ trợ</h1>
+                <p>FAQ</p>
+                <p>Chăm sóc khách hàng</p>
+                <p>Vận chuyển và đổi trả hàng</p>
+                <p>Liên hệ</p>
+            
+            </div>
+            <div class="foot-ctn">
+                <h1>Thông tin</h1>
+                <p>Nội dung và hình ảnh bài viết trên trang petmart.vn và petmart.info đã được đăng ký bản quyền Digital Millennium
+                Copyright Act (DMCA) theo tiêu chuẩn Creative Commons Attribution-NoDerivs 3.0 Unported License. Vui lòng dẫn link nguồn
+                khi sao chép các bài viết trên trang này.
+                2021 © CÔNG TY PET MART VIỆT NAM - Giấy phép ĐKKD số 0106683363</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+<script>
+    
+    window.onscroll = function () { myFunction() };
+    
+        var navbar = document.getElementById("navbar");
+        var sticky = navbar.offsetTop;
+
+        function myFunction() {
+           
+            if (window.pageYOffset >= sticky) {
+                navbar.classList.add("sticky")
+            } else {
+                navbar.classList.remove("sticky");
+            }
+        }
+
+     function validateform() {
+            var name = document.myform.username.value;
+            var password = document.myform.password.value;
+            if (name == null || name == "") {
+                alert("Bạn chưa nhập username !");
+                return false;
+            } else if (password == null || password == "") {
+                alert("Bạn chưa nhập pass !");
+                return false;
+            }
+        }
+
+     function dangnhap() {
+            var i = document.querySelector('#un').value
+            sessionStorage.setItem('user', i);
+        }
+    function dangxuat(){
+        sessionStorage.clear();
+    }
+    
+    if(!sessionStorage.user){
+        document.querySelector('#login').innerHTML='Đăng nhập';
+    }else{  
+                     document.querySelector('#logout').innerHTML = 'Đăng xuất';    
+    }
+</script>

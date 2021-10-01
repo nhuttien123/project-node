@@ -1,0 +1,46 @@
+<%- include("nav")%>
+
+<div class="card mt-3">
+    <div class="card-header info">
+        QUẢN LÝ LOẠI HÀNG
+    </div>
+    <div class="card-body">
+        <form action="/addnew" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="">Tên sản phẩm</label>
+                <input type="text" name="tensp" class="form-control " placeholder="Tên sản phẩm">
+            </div>
+            <div class="form-group">
+                <label for="">Loại sản phẩm</label>
+                <select name="loaisp" class="form-control" id="">
+                    <% for (let c of cat) {%>
+                    <option value="<%=c.cataId%>" name="loaisp"><%=c.loai%></option>
+                    <%}%>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="">Giá gốc</label>
+                <input type="text" name="gia" class="form-control" placeholder="Giá gốc">
+            </div>
+            <div class="form-group">
+                <label for="">Giá giảm</label>
+                <input type="text" name="sale" class="form-control " placeholder="Giá Giảm">
+            </div>
+            <div class="form-group">
+                <label for="">Hình ảnh</label> 
+                <input type="file" name="img" class="form-control ">
+            </div>
+            <div class="form-group">
+                <label for="">Mô tả</label>
+                <textarea class="form-control" name="desc" id="" cols="30" rows="10"></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-dark">Lưu</button>
+                
+            </div>
+            
+        </form>
+    </div>
+
+</div>
+<%- include("foot")%>

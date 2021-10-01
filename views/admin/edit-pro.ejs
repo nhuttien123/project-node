@@ -1,0 +1,55 @@
+<%- include("nav")%>
+
+    <div class="card mt-3">
+        <div class="card-header info">
+            QUẢN LÝ LOẠI HÀNG
+        </div>
+        <div class="card-body">
+           
+            <form action="/editpro" method="post" enctype="multipart/form-data">
+                <% for (let d of pro) {%>
+                    <input type="text" value="<%=d.proId%>" name="idsp">
+                <div class="form-group">
+                    <label for="">Tên sản phẩm</label>
+                    <input value="<%=d.proname%>" type="text" name="tensp" class="form-control" placeholder="Tên sản phẩm">
+                </div>
+                <div class="form-group">
+                    <label for="">Loại sản phẩm</label>
+                    <select name="loaisp" class="form-control" id="" >
+                        <% for (let c of cat) {%>
+                            <option value="<%=c.cataId%>" name="loaisp">
+                                <%=c.loai%>
+                            </option>
+                            <%}%>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="">Giá gốc</label>
+                    <input value="<%=d.price%>"  type="text" name="gia" class="form-control" placeholder="Giá gốc">
+                </div>
+                <div class="form-group">
+                    <label for="">Giá giảm</label>
+                    <input value="<%=d.saleprice%>"  type="text" name="sale" class="form-control" placeholder="Giá Giảm">
+                </div>
+                <div class="form-group">
+                    <img src="../images/<%=d.images%>" alt="" >
+                </div>
+                <div class="form-group">
+                    <label for="">Hình ảnh</label>
+                    <input value="<%=d.images%>"  type="file" name="img" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Mô tả</label>
+                    <textarea value="<%=d.mota%>"  class="form-control" name="desc" id="" cols="30" rows="10"><%=d.mota%></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                    <a href="#" class="btn btn-danger">Danh sách</a>
+                </div>
+            <%}%>
+            </form>
+            
+        </div>
+
+    </div>
+    <%- include("foot")%>

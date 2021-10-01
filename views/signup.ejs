@@ -1,0 +1,82 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@600&display=swap');
+</style>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        font-family:  "Catamaran", sans-serif;
+    }
+    .b{
+        background-color: #fa4251;
+        height: 100%;
+        width: 100%;
+    }
+    form{
+        background-color: white;
+        border-radius: 10px;
+    }
+    .form-group{
+        margin-top: 1.5vw;
+    }
+    .mg{
+        margin-top: 5vw;
+    }
+</style>
+<div class="b">
+    <div class="card-body ">
+       <div class="mg"></div>
+        <form action="/signup_" class="col-8 border  p-5 m-auto" method="post" enctype="multipart/form-data" 
+         onsubmit="return validateform()" name="myform">
+            <h1 align=center>Đăng ký thành viên PETCARE</h1>
+            <div class="form-group ">
+                <input type="text" name="username" class="form-control " placeholder="Tên người dùng">
+            </div>
+            <div class="form-group">
+               
+                <input type="password" name="password" class="form-control " placeholder="Mật khẩu">
+            </div>
+            <div class="form-group">
+                
+                <input type="email" name="email" class="form-control " placeholder="Email">
+            </div>
+            <div class="form-group">
+                <label for="" class="">Ngày sinh</label>
+                <input type="date" name="date" class="form-control " placeholder="Ngày sinh">
+            </div>
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-dark w-25 p-2 ">Lưu</button>
+
+            </div>
+
+        </form>
+    </div>
+
+</div>
+</div>
+<script>
+    function validateform() {
+        var name = document.myform.username.value;
+        var password = document.myform.password.value;
+          var mail = document.myform.email.value;
+          var date = document.myform.date.value;
+        if (name == null || name == "") {
+            alert("Bạn chưa nhập username !");
+            return false;
+        } else if (password == null || password == "") {
+            alert("Bạn chưa nhập pass !");
+            return false;
+        }
+        else if (mail == null || mail == "") {
+            alert("Bạn chưa nhập email !");
+            return false;
+        }
+         else if (date == null || date == "") {
+            alert("Bạn chưa nhập ngày sinh !");
+            return false;
+        }else{
+            alert("Đăng ký thành công !")
+        }
+    }
+</script>
